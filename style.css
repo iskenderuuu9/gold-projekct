@@ -221,13 +221,14 @@
 .modal-btm button {
   width: 100%;
   height: 55px;
-  display: flex;  margin-top: 5px;
+  display: flex;
+  margin-top: 5px;
 }
 
 /* ==================== */
 
 .mcart {
-  position: relative; 
+  position: relative;
 }
 
 .delete-btn {

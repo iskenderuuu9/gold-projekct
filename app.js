@@ -1,62 +1,44 @@
 let products = [
-    {
-        id: 1,
-        title: "BESTSELLER",
-        image: "./images/p1.png",
-        price:1200,
-    },
+  {
+    id: 1,
+    title: "BESTSELLER",
+    image: "./images/p1.png",
+    price: 1200,
+  },
 
-      {
-        id: 2,
-        title: "SOLITAIRE",
-        image: "./images/p2.png",
-        price:1200,
-    },
+  {
+    id: 2,
+    title: "SOLITAIRE",
+    image: "./images/p2.png",
+    price: 1200,
+  },
 
-      {
-        id: 3,
-        title: "PLATINUM",
-        image: "./images/p3.png",
-        price:1200,
-    },
+  {
+    id: 3,
+    title: "PLATINUM",
+    image: "./images/p3.png",
+    price: 1200,
+  },
 
-      {
-        id: 4,
-        title: "CHEAP",
-        image: "./images/p4.png",
-        price:1200,
-    },
-]
-let catiegory = document.querySelector(".products")
+  {
+    id: 4,
+    title: "CHEAP",
+    image: "./images/p4.png",
+    price: 1200,
+  },
+];
+let catiegory = document.querySelector(".products");
 let show = products.map((item) => {
-    return`
+  return `
    <div class="cart">
             <img src="${item.image}" alt="">
             <h3>${item.title}\</h3>
             <p>Trendy models of our experts, for the love of your life selected</p>
             <button onclick="addcart(${item.id})">Discover now</button>
         </div>
-    `
-})
-catiegory.innerHTML = show.join("")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    `;
+});
+catiegory.innerHTML = show.join("");
 
 let productss = [
   {
@@ -135,43 +117,42 @@ let itemsHTML = productss.map((item) => {
 
 category.innerHTML = itemsHTML.join("");
 // ---------------------------------------------------
- 
 
-let openmodal = document.getElementById("open")
-let closemodal = document.getElementById("close")
-let modal = document.querySelector(".modal")
+let openmodal = document.getElementById("open");
+let closemodal = document.getElementById("close");
+let modal = document.querySelector(".modal");
 
-openmodal.onclick = function(){
-  modal.style.display = "block"
-}
+openmodal.onclick = function () {
+  modal.style.display = "block";
+};
 
-closemodal.onclick = function(){
-  modal.style.display = "none"
-}
+closemodal.onclick = function () {
+  modal.style.display = "none";
+};
 // ===================================================================
-let array = []
+let array = [];
 function addcart(id) {
-  let frindproduct = products.find((data) => data.id == id)
-  if(frindproduct){
-    array.push(frindproduct)
+  let frindproduct = products.find((data) => data.id == id);
+  if (frindproduct) {
+    array.push(frindproduct);
   }
-  Counter()
-  displayCart()
+  Counter();
+  displayCart();
 }
 
 // ===============================================================
-let count = document.querySelector(".count")
+let count = document.querySelector(".count");
 
 function Counter() {
-  count.innerHTML = array.length
+  count.innerHTML = array.length;
 }
 // ===============================================================
 
 let modalmain = document.querySelector(".modal-main");
 
 function displayCart() {
-    let mapProduct = array.map((x, index) => {
-        return`
+  let mapProduct = array.map((x, index) => {
+    return `
             <div class="mcart">
                 <img src="${x.image}" alt="">
                 <span>${x.title}</span>
@@ -179,18 +160,17 @@ function displayCart() {
                 <button class="delete-btn" data-index="${index}">×</button>
             </div>
         `;
-    });
-    
-    modalmain.innerHTML = mapProduct.join("");
-    
+  });
 
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            array.splice(index, 1);
-            Counter();
-            displayCart();
-        });
+  modalmain.innerHTML = mapProduct.join("");
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const index = parseInt(this.getAttribute("data-index"));
+      array.splice(index, 1);
+      Counter();
+      displayCart();
     });
+  });
 }
 // =============
